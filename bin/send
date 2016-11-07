@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ "$1" = "" ]
+then
+  echo "Commands:"
+  echo "\tclear 0"
+  echo "\trecord myfile.wav"
+  echo "\trecord stop"
+  echo "\tbpm-set 200"
+  echo "\tquit"
+else
+  echo "$@;" | nc localhost 54877
+fi

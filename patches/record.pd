@@ -1,0 +1,28 @@
+#N canvas 68 307 450 300 10;
+#X obj 38 266 writesf~ 2;
+#X obj 12 78 route stop;
+#X obj 69 100 t a b;
+#X msg 12 100 stop;
+#X obj 96 121 delay 100;
+#X msg 96 143 start;
+#X obj 69 166 list prepend open;
+#X obj 69 188 list trim;
+#X obj 12 56 list trim;
+#X obj 12 34 r \$1/record;
+#X obj 38 221 r~ \$2/master/left;
+#X obj 156 221 r~ \$2/master/right;
+#X text 13 2 args: name = NAME/record \; audio-name = NAME/master/left
+and NAME/master/right \;;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X connect 2 0 6 0;
+#X connect 2 1 4 0;
+#X connect 3 0 0 0;
+#X connect 4 0 5 0;
+#X connect 5 0 0 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 0;
+#X connect 8 0 1 0;
+#X connect 9 0 8 0;
+#X connect 10 0 0 0;
+#X connect 11 0 0 1;

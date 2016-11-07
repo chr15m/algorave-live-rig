@@ -1,0 +1,12 @@
+#N canvas 1090 1575 450 300 10;
+#X obj 32 19 r slot;
+#X msg 32 78 \; mix/slot/\$1/show bang \;;
+#X msg 32 43 \; mix/slot/\$1 slots/loop mix \$1 8 \$0/SEED \$2 \$3
+;
+#X obj 32 131 r clear;
+#X msg 32 153 \; mix/slot/\$1/clear bang \;;
+#X msg 33 227 \; pd quit \;;
+#X obj 33 201 r quit;
+#X connect 0 0 2 0;
+#X connect 3 0 4 0;
+#X connect 6 0 5 0;

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export ALGORAVE_BPM="$1"
+echo "clock/bpm-slide ${ALGORAVE_BPM};" | nc localhost 54877

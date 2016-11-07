@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+if [ "$2" = "" ]
+then
+  echo "Usage: $0 SLOT# GENERATOR"
+  cd drillbit
+  ./make-stem.hy | grep -v "Usage"
+  cd ..
+else
+  echo "Notehash: ${ALGORAVE_NOTEHASH}"
+
+  cd drillbit
+  modcmd="./make-stem.hy $2 ${ALGORAVE_BPM} ${ALGORAVE_NOTEHASH} $3"
+  echo "${modcmd}"
+  mod=`${modcmd}`
+  if [ "$?" == "0" ]
+  then
+    cd ..
+    echo "Built mod: ${mod}"
+    wav="${mod/.it/.wav}"
+    ogg="${wav/.wav/.ogg}"
+    echo "Making wav: ${wav}"
+    xmp -q -d wav -o stems/${wav} drillbit/${mod} >/dev/null 2>&1
+    echo "Making ogg: ${ogg}"
+    oggenc "stems/${wav}" >/dev/null 2>&1
+    echo "Sending to Pd"
+    #echo "slot $1 ${ALGORAVE_BEATS} ${wav};" | nc localhost 54877
+    #echo "mix/slot/$1 slots/loop mix $1 8 #0/SEED ${ALGORAVE_BEATS} ${wav};" | nc localhost 54877
+    echo "mix/slot/$1 slots/loop-readanysf mix $1 8 ${ALGORAVE_BPM} ${ALGORAVE_BEATS} stems/${ogg};" | nc localhost 54877
+  else
+    echo "make-stem failed."
+  fi
+fi

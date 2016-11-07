@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+cd drillbit
+progression=`./make-note-progression.hy $1 2>&1`
+NOTEHASH=`echo "${progression}" | grep -o -E "hash [0-9a-f]+" | cut -f2 -d" "`
+BEATS=`echo "${progression}" | grep -o -E "beats [0-9]+" | cut -f2 -d" "`
+echo "${progression}" | nc localhost 54877
+export "ALGORAVE_NOTEHASH=${NOTEHASH}"
+export "ALGORAVE_BEATS=${BEATS}"
+echo "${progression}" >&2
+cd ..
+

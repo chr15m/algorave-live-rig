@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$1" = "--stop" ]
+then
+  ./send recorder/record stop
+else
+  filename="`date +"%Y-%m-%d-%H:%M"`-algorave-live-set.wav"
+  ./send recorder/record open "${filename}"
+  ./send recorder/record start
+  echo $filename
+fi

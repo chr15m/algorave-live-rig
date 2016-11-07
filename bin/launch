@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[ "$1" = "--gui" ] || flag=-nogui
+ip=`ifconfig wlan0 | grep -Eo "inet addr:[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | cut -f2 -d":"`
+./mike/mixer -path ./stems -path ./patches -path ./ -send "ip ${ip}" -open patches/container.pd -open patches/progression.pd $flag

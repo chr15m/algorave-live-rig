@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "mix/slot/$1/clear bang;" | nc localhost 54877
