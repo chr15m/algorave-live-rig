@@ -1,4 +1,4 @@
-#N canvas 1079 184 450 321 10;
+#N canvas 1078 179 450 321 10;
 #X declare -stdpath readanysf;
 #X obj 36 98 loadbang;
 #X msg 36 150 open;
@@ -17,7 +17,8 @@
 #X msg 182 285 1;
 #X floatatom 231 287 5 0 0 0 - - -, f 5;
 #X obj 182 263 route ready float;
-#X msg 230 173 stop \, time_seek \$1 \, play;
+#X msg 230 173 time_seek \$1 \, play;
+#X msg 132 172 loop 1;
 #X connect 0 0 10 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -27,6 +28,7 @@
 #X connect 8 0 16 0;
 #X connect 9 0 11 0;
 #X connect 10 0 1 0;
+#X connect 10 1 17 0;
 #X connect 11 0 4 0;
 #X connect 11 1 4 0;
 #X connect 11 2 15 0;
@@ -34,3 +36,4 @@
 #X connect 15 0 13 0;
 #X connect 15 1 14 0;
 #X connect 16 0 9 0;
+#X connect 17 0 11 0;
