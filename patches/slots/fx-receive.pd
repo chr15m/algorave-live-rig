@@ -1,0 +1,5 @@
+#N canvas 467 203 450 300 10;
+#X obj 11 55 throw~ \$1/mixer/\$2;
+#X obj 11 30 catch~ \$1/bus-fx1/in;
+#X text 7 7 args: namespace channel channels seed;
+#X connect 1 0 0 0;

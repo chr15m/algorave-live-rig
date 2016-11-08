@@ -1,33 +1,21 @@
-#N canvas 550 95 450 326 10;
+#N canvas 546 75 450 326 10;
 #X obj 11 299 dac~;
-#N canvas 2 48 450 300 init 1;
+#N canvas 977 254 450 300 init 0;
 #X obj 10 11 loadbang;
 #X obj 10 33 t b b;
+#X msg 37 57 \; mix/slot/clear bang \; mix/mixer/clear bang \;;
 #X msg 10 109 \; pd dsp 1 \; mix/mixer/channels 8 \; mix/slot/channels
 8 \;;
-#X msg 37 57 \; mix/slot/clear bang \; mix/mixer/clear bang \;;
 #X connect 0 0 1 0;
-#X connect 1 0 2 0;
-#X connect 1 1 3 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
 #X restore 382 13 pd init;
 #X obj 11 124 slot mix;
 #X obj 11 251 r~ mix/master/left;
 #X obj 31 275 r~ mix/master/right;
 #X text 11 9 command list \; \; seed ... \; mix/slot/0 looper my/file.wav
 \; bpm 180 \; bpm-slide 180 \;;
-#X msg 266 274 \; mix/slot/0/show bang \;;
 #X floatatom 216 12 5 0 0 0 - clock/tick -, f 5;
-#X obj 317 52 r clock/bpm;
-#X obj 317 94 s mix/mixer/bpm;
-#X obj 265 180 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
 #X obj 11 145 mixer mix slots/live-mixer-unit;
-#X floatatom 317 74 5 0 0 0 - - -, f 5;
-#X obj 265 200 - 1;
-#X obj 265 222 s mix/mixer/0/snatch;
 #X connect 3 0 0 0;
 #X connect 4 0 0 1;
-#X connect 8 0 12 0;
-#X connect 10 0 13 0;
-#X connect 12 0 9 0;
-#X connect 13 0 14 0;

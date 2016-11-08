@@ -1,0 +1,11 @@
+#N canvas 937 233 450 300 10;
+#X declare -stdpath ggee;
+#X obj 304 16 declare -stdpath ggee;
+#X obj 18 94 shell;
+#X obj 18 116 print;
+#X msg 18 47 ALGORAVE_NOTEHASH=52f2f44f2fea3 ALGORAVE_BPM=180 ./bin/slot
+0 bleep_crunch;
+#X msg 53 22 ./bin/bpm 180;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;

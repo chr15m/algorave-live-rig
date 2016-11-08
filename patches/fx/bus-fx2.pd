@@ -1,0 +1,14 @@
+#N canvas 628 153 450 300 10;
+#X obj 13 12 inlet~;
+#X obj 14 266 outlet~;
+#X obj 83 12 inlet;
+#X obj 13 84 fx/delay;
+#X obj 13 146 fx/reverb;
+#X obj 65 266 outlet~;
+#X connect 0 0 3 0;
+#X connect 2 0 3 1;
+#X connect 2 0 4 2;
+#X connect 3 0 4 0;
+#X connect 3 0 4 1;
+#X connect 4 0 1 0;
+#X connect 4 1 5 0;
