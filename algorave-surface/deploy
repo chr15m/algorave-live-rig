@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for server in Xperia_Z3_Compact.local LG_Optimus_F3Q.local
+do
+  echo "Syncing to ${server}"
+  rsync -avzq -e "ssh -p 2222" ./ "${server}:/sdcard/PdDroidParty/fx-surface"
+done

@@ -27,6 +27,7 @@ else
     #echo "slot $1 ${ALGORAVE_BEATS} ${wav};" | nc localhost 54877
     #echo "mix/slot/$1 slots/loop mix $1 8 #0/SEED ${ALGORAVE_BEATS} ${wav};" | nc localhost 54877
     echo "mix/slot/$1 slots/loop-readanysf mix $1 8 ${ALGORAVE_BPM} ${ALGORAVE_BEATS} stems/${ogg};" | nc localhost 54877
+    echo "surface slot/$1 ${2};" | nc localhost 54877
   else
     echo "make-stem failed."
   fi

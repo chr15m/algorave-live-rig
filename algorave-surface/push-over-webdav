@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$1" == "" ]
+then
+	echo "Usage: $0 IP-ADDRESS"
+else
+	dir=`pwd`
+	name=`basename $dir`
+	echo "mkdir $name" | cadaver dav://$1:8080/
+	echo "mput *" | cadaver dav://$1:8080/$name
+fi
