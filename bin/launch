@@ -1,6 +1,6 @@
 #!/bin/sh
 
-{ sleep 2; aconnect 24:0 128:0; aconnect 128:2 24:0; } &
+{ sleep 2; ./bin/midi-connect; } &
 [ "$1" = "--gui" ] || flag=-nogui
 ip=`ifconfig wlan0 | grep -Eo "inet addr:[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" | cut -f2 -d":"`
 pd -open patches/_main_mixer.pd -path ./stems -path ./patches -path ./mike -path ./blockhead -path ./ -send "ip ${ip}" -open patches/container.pd -open patches/progression.pd $flag

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+aconnect 24:0 128:0
+aconnect 128:2 24:0
