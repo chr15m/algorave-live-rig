@@ -1,4 +1,4 @@
-#N canvas 546 75 450 326 10;
+#N canvas 545 70 450 326 10;
 #X obj 11 299 dac~;
 #N canvas 977 254 450 300 init 0;
 #X obj 10 11 loadbang;

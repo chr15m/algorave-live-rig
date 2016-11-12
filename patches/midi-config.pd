@@ -1,10 +1,12 @@
-#N canvas 32 53 1454 869 10;
+#N canvas 113 125 1454 869 10;
 #X declare -path ../s-abstractions/trunk;
 #X declare -path ../pd-midi-guis;
-#X obj 1215 17 declare -path ../s-abstractions/trunk;
-#X obj 910 17 s-midimonitor;
-#X obj 1215 39 declare -path ../pd-midi-guis;
-#N canvas 365 133 450 300 route-volumes 0;
+#X declare -path ../lolPd;
+#X declare -path ../list-abs;
+#X obj 340 19 declare -path ../s-abstractions/trunk;
+#X obj 35 19 s-midimonitor;
+#X obj 340 41 declare -path ../pd-midi-guis;
+#N canvas 364 128 450 300 route-volumes 0;
 #X obj 15 117 spigot;
 #X obj 31 78 expr $f1 < 8 && $f1 >= 0;
 #X obj 15 139 / 127;
@@ -22,31 +24,27 @@
 #X connect 6 0 0 0;
 #X connect 6 1 3 0;
 #X connect 7 0 4 1;
-#X restore 38 40 pd route-volumes;
-#X obj 42 132 vsl 15 128 0 1 0 0 empty mix/mixer/0/vol empty 0 -9 0
+#X restore 36 146 pd route-volumes;
+#X obj 40 188 vsl 15 128 0 1 0 0 empty mix/mixer/0/vol empty 0 -9 0
 10 -262144 -1 -1 0 1;
-#X obj 62 132 vsl 15 128 0 1 0 0 empty mix/mixer/1/vol empty 0 -9 0
+#X obj 60 188 vsl 15 128 0 1 0 0 empty mix/mixer/1/vol empty 0 -9 0
 10 -262144 -1 -1 0 1;
-#X obj 82 132 vsl 15 128 0 1 0 0 empty mix/mixer/2/vol empty 0 -9 0
+#X obj 80 188 vsl 15 128 0 1 0 0 empty mix/mixer/2/vol empty 0 -9 0
 10 -262144 -1 -1 0 1;
-#X obj 102 132 vsl 15 128 0 1 0 0 empty mix/mixer/3/vol empty 0 -9
+#X obj 100 188 vsl 15 128 0 1 0 0 empty mix/mixer/3/vol empty 0 -9
 0 10 -262144 -1 -1 0 1;
-#X obj 122 132 vsl 15 128 0 1 0 0 empty mix/mixer/4/vol empty 0 -9
+#X obj 120 188 vsl 15 128 0 1 0 0 empty mix/mixer/4/vol empty 0 -9
 0 10 -262144 -1 -1 0 1;
-#X obj 142 132 vsl 15 128 0 1 0 0 empty mix/mixer/5/vol empty 0 -9
+#X obj 140 188 vsl 15 128 0 1 0 0 empty mix/mixer/5/vol empty 0 -9
 0 10 -262144 -1 -1 0 1;
-#X obj 162 132 vsl 15 128 0 1 0 0 empty mix/mixer/6/vol empty 0 -9
+#X obj 160 188 vsl 15 128 0 1 0 0 empty mix/mixer/6/vol empty 0 -9
 0 10 -262144 -1 -1 0 1;
-#X obj 182 132 vsl 15 128 0 1 0 0 empty mix/mixer/7/vol empty 0 -9
-0 10 -262144 -1 -1 0 1;
-#X obj 1044 17 g_midi_settings;
-#X obj 1044 83 g_midi_toggle CYCLE;
-#X text 1131 88 CYCLE;
-#X obj 1053 689 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
-#X obj 1053 709 - 1;
-#X obj 1053 731 s mix/mixer/0/snatch;
-#N canvas 363 123 450 469 route-pace 0;
+#X obj 180 188 vsl 15 128 0 1 0 0 empty mix/mixer/7/vol empty 0 -9
+0 10 -262144 -1 -1 8300 1;
+#X obj 169 19 g_midi_settings;
+#X obj 169 85 g_midi_toggle CYCLE;
+#X text 256 90 CYCLE;
+#N canvas 361 113 450 469 route-pace 0;
 #X obj 15 117 spigot;
 #X obj 31 40 t f f;
 #X obj 15 347 s;
@@ -57,66 +55,96 @@
 #X obj 15 205 change;
 #X obj 15 183 int;
 #X obj 15 139 / 128;
-#X msg 15 295 2 \$1;
-#X obj 15 317 pow;
 #X obj 79 204 - 16;
-#X obj 15 248 mod 3;
-#X obj 15 273 - 1;
-#X obj 15 227 + 1;
 #X connect 0 0 9 0;
 #X connect 1 0 5 0;
-#X connect 1 1 12 0;
+#X connect 1 1 10 0;
 #X connect 3 0 0 0;
 #X connect 3 1 1 0;
 #X connect 4 0 2 1;
 #X connect 5 0 0 1;
 #X connect 6 0 8 0;
-#X connect 7 0 15 0;
+#X connect 7 0 2 0;
 #X connect 8 0 7 0;
 #X connect 9 0 6 0;
-#X connect 10 0 11 0;
-#X connect 11 0 2 0;
-#X connect 12 0 4 0;
-#X connect 13 0 14 0;
-#X connect 14 0 10 0;
-#X connect 15 0 13 0;
-#X restore 145 40 pd route-pace;
-#N canvas 514 211 450 549 route-snatch 0;
-#X obj 15 117 spigot;
-#X obj 12 431 s;
-#X obj 15 15 ctlin;
-#X obj 31 88 expr $f1 < 72 && $f1 >= 64;
-#X obj 77 304 ctlout;
-#X obj 15 139 sel 127;
-#X obj 15 251 t f f;
-#X obj 31 40 t f f f;
-#X obj 42 271 * 127;
-#X msg 68 382 symbol mix/mixer/\$1/snatch-enable;
-#X obj 137 151 text get \$0/snatchers;
-#X obj 110 124 t f f;
-#X obj 18 180 f;
-#X obj 18 201 == 0;
-#X floatatom 18 223 5 0 0 0 - - -, f 5;
-#X obj 252 12 text define -k \$0/snatchers;
-#A set 0 \; 0 \; 0 \; 0 \; 0 \; 0 \; 0 \; 0 \; 0 \; 0 \; 0 \; 0 \;
-0 \; 0 \; 0 \; 0 \;;
-#X obj 70 62 - 64;
-#X connect 0 0 5 0;
-#X connect 2 0 0 0;
-#X connect 2 1 7 0;
-#X connect 2 2 4 2;
-#X connect 3 0 0 1;
-#X connect 6 0 1 0;
-#X connect 6 1 8 0;
-#X connect 7 0 3 0;
-#X connect 7 1 4 1;
-#X connect 7 2 16 0;
+#X connect 10 0 4 0;
+#X restore 143 146 pd route-pace;
+#X obj 341 62 declare -path ../lolPd;
+#N canvas 2 50 551 417 snatcher 0;
+#X obj 37 47 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144 -1
+-1 0;
+#X obj 37 67 - 1;
+#X obj 37 89 s mix/mixer/0/snatch;
+#X msg 323 178 -1;
+#X obj 411 157 t b f;
+#X obj 323 156 sel 0 1;
+#X obj 411 180 0;
+#X obj 323 134 r snatch-down;
+#X obj 411 135 r snatch-val;
+#X floatatom 323 214 5 0 0 0 - - -, f 5;
+#X text 224 9 sound snatcher;
+#X obj 122 127 s-midictl 61;
+#X obj 36 127 s-midictl 60;
+#X obj 208 127 s-midictl 62;
+#X obj 36 213 pack f f f;
+#X obj 122 179 t b f;
+#X obj 208 179 t b f;
+#X obj 36 149 / 127;
+#X obj 122 149 / 127;
+#X obj 208 149 / 127;
+#X obj 36 235 expr $f1 + $f2 * 2 + $f3 * 4;
+#X obj 36 257 - 1;
+#X obj 36 336 list prepend;
+#X obj 36 300 range 8;
+#X obj 36 278 t b f;
+#X msg 36 358 \; mix/mixer/\$2/snatch \$1 \;;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 9 0;
+#X connect 4 0 6 0;
+#X connect 4 1 6 1;
+#X connect 5 0 3 0;
+#X connect 5 1 6 0;
+#X connect 6 0 9 0;
+#X connect 7 0 5 0;
 #X connect 8 0 4 0;
-#X connect 9 0 1 1;
-#X connect 11 1 10 0;
-#X connect 12 0 13 0;
-#X connect 13 0 14 0;
-#X connect 16 0 11 0;
-#X restore 235 40 pd route-snatch;
-#X connect 15 0 16 0;
-#X connect 16 0 17 0;
+#X connect 9 0 24 0;
+#X connect 11 0 18 0;
+#X connect 12 0 17 0;
+#X connect 13 0 19 0;
+#X connect 14 0 20 0;
+#X connect 15 0 14 0;
+#X connect 15 1 14 1;
+#X connect 16 0 14 0;
+#X connect 16 1 14 2;
+#X connect 17 0 14 0;
+#X connect 18 0 15 0;
+#X connect 19 0 16 0;
+#X connect 20 0 21 0;
+#X connect 21 0 24 0;
+#X connect 22 0 25 0;
+#X connect 23 0 22 0;
+#X connect 24 0 23 0;
+#X connect 24 1 22 1;
+#X restore 341 144 pd snatcher;
+#X obj 341 83 declare -path ../list-abs;
+#X obj 311 196 midi-mapper 64 72;
+#X obj 311 328 midi-mapper 32 40;
+#X obj 311 350 t a a;
+#X obj 338 374 unpack f f;
+#X obj 395 397 == 0;
+#X obj 338 426 pack f f;
+#X msg 311 218 \; mix/mixer/\$1/snatch-enable \$2;
+#X msg 311 492 \; mix/mixer/\$1/bus-fx1 \$2;
+#X msg 338 448 \; mix/mixer/\$1/bus-main \$2;
+#X obj 311 264 midi-mapper 48 56;
+#X msg 311 286 \; mix/mixer/\$1/bus-fx2 \$2;
+#X connect 19 0 25 0;
+#X connect 20 0 21 0;
+#X connect 21 0 26 0;
+#X connect 21 1 22 0;
+#X connect 22 0 24 0;
+#X connect 22 1 23 0;
+#X connect 23 0 24 1;
+#X connect 24 0 27 0;
+#X connect 28 0 29 0;

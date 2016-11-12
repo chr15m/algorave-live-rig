@@ -1,4 +1,4 @@
-#N canvas 894 570 450 300 10;
+#N canvas 986 564 450 300 10;
 #X obj 9 11 r progression;
 #X obj 9 33 t a a;
 #X obj 36 55 print progression;
@@ -41,7 +41,7 @@
 #X connect 6 0 7 0;
 #X restore 184 182 pd progression;
 #X obj 9 99 route hash-int section pattern rootnote;
-#X floatatom 182 120 5 0 0 0 - - -, f 5;
+#X floatatom 182 144 5 0 0 0 - - -, f 5;
 #X floatatom 280 181 5 0 0 0 - - -, f 5;
 #X obj 273 135 / 16;
 #N canvas 2 50 450 448 bleep 0;
@@ -88,10 +88,11 @@
 #X obj 403 164 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 184 269 s GOODNOTES;
-#X obj 182 139 s ROOTNOTE;
+#X obj 182 163 s ROOTNOTE;
 #X obj 268 225 list prepend set;
 #X obj 268 247 list trim;
-#X msg 268 269 2 6 8 9 11;
+#X msg 268 269 8 6 1 10;
+#X obj 182 123 + 1;
 #X connect 0 0 1 0;
 #X connect 1 0 8 0;
 #X connect 1 1 2 0;
@@ -104,7 +105,7 @@
 #X connect 11 0 5 0;
 #X connect 11 1 9 0;
 #X connect 11 2 10 0;
-#X connect 11 3 12 0;
+#X connect 11 3 23 0;
 #X connect 12 0 19 0;
 #X connect 14 0 4 0;
 #X connect 16 0 18 0;
@@ -112,3 +113,4 @@
 #X connect 17 0 15 2;
 #X connect 20 0 21 0;
 #X connect 21 0 22 0;
+#X connect 23 0 12 0;

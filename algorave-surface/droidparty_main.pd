@@ -61,12 +61,12 @@
 #X connect 24 1 23 1;
 #X connect 25 0 14 0;
 #X restore 7 255 pd net;
-#X obj 7 35 router fx-one/sel;
+#X obj 7 35 router fx-one/sel/idx;
 #X obj 7 73 router snatch-down;
 #X obj 7 95 router snatch-val;
 #X restore 7 268 pd x;
 #X obj 8 10 touch 200 200 fx-one;
-#X obj 8 222 taplist 200 32 x fx-one/sel reverb delay ghost chop;
+#X obj 8 222 taplist 200 32 x fx-one/sel crush delay ringmod filter ghost;
 #X obj 292 269 tgl 14 0 empty connected empty 17 7 0 10 -262144 -1
 -1 0 1;
 #X symbolatom 313 269 20 0 0 0 - ip -, f 20;

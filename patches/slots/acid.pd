@@ -1,4 +1,4 @@
-#N canvas 558 287 542 458 10;
+#N canvas 556 277 542 458 10;
 #X declare -path ../../pd-acid-core;
 #X declare -path ../../pd-acid-core/common;
 #X declare -path ../../pd-acid-core/blockhead;
@@ -6,38 +6,38 @@
 #X obj 226 15 declare -path ../../pd-acid-core;
 #X obj 370 215 r \$1/config/seed;
 #X obj 397 290 s \$1/acid/\$2/seed;
-#X obj 300 117 r clock/tick;
-#X obj 300 189 s \$1/acid/\$2/tick;
+#X obj 210 197 r clock/tick;
+#X obj 210 269 s \$1/acid/\$2/tick;
 #X obj 18 400 throw~ \$1/mixer/\$2;
 #X obj 370 267 t b f;
 #X obj 370 314 s \$1/acid/\$2/makenew;
 #X obj 371 361 s \$1/acid/\$2/notes;
 #X obj 18 316 catch~ \$1/acid/\$2/out;
 #X obj 78 352 hsl 64 15 1 20 0 1 empty empty distortion -2 -8 0 10
--262144 -1 -1 5800 1;
+-262144 -1 -1 2600 1;
 #X obj 18 376 e_foldover;
 #X obj 371 395 r ROOTNOTE;
 #X obj 371 418 s \$1/acid/\$2/rootnote;
 #X obj 371 338 r GOODNOTES;
 #X obj 226 37 declare -path ../../pd-acid-core/common;
 #X obj 22 29 hsl 128 15 0 127 0 1 empty empty acid/cutoff -2 -8 0 10
--262144 -1 -1 8000 1;
+-262144 -1 -1 4900 1;
 #X obj 22 100 hsl 128 15 0 127 0 1 empty empty acid/rez -2 -8 0 10
--262144 -1 -1 1500 1;
+-262144 -1 -1 200 1;
 #X obj 19 164 hradio 15 1 1 6 empty empty empty 0 -8 0 10 -262144 -1
 -1 1;
 #X obj 19 184 - 2;
 #X obj 19 49 s \$1/acid/\$2/cutoff;
 #X obj 19 120 s \$1/acid/\$2/rez;
 #X floatatom 370 237 5 0 0 0 - - -, f 5;
-#X floatatom 300 169 5 0 0 0 - - -, f 5;
+#X floatatom 210 249 5 0 0 0 - - -, f 5;
 #X obj 226 58 declare -path ../../pd-acid-core/blockhead;
 #X obj 226 78 declare -path ../../pd-acid-core/rjlib/rj;
 #X obj 18 278 acid-core \$1/acid/\$2;
 #X obj 226 366 list prepend set;
 #X obj 226 388 list trim;
-#X msg 226 410 10 8 8 0;
-#N canvas 2 48 450 300 clock-dividier 0;
+#X msg 226 410 3 3 3 6;
+#N canvas 2 50 450 300 clock-dividier 0;
 #X obj 12 12 inlet;
 #X obj 12 94 u_tick-multiplier;
 #X obj 165 12 r clock/bpm;
@@ -55,10 +55,14 @@
 #X connect 5 0 6 0;
 #X connect 6 0 7 0;
 #X connect 7 0 1 0;
-#X restore 300 144 pd clock-dividier;
-#X obj 399 116 r \$1/player/\$2/speed;
+#X restore 210 224 pd clock-dividier;
+#X obj 319 116 r \$1/player/\$2/speed;
 #X floatatom 445 392 5 0 0 0 - - -, f 5;
 #X obj 19 204 s \$1/acid/\$2/globaloctave;
+#X msg 319 158 2 \$1;
+#X obj 319 180 pow;
+#X floatatom 319 202 5 0 0 0 - - -, f 5;
+#X obj 319 138 - 1;
 #X connect 1 0 22 0;
 #X connect 3 0 30 0;
 #X connect 6 0 7 0;
@@ -78,5 +82,9 @@
 #X connect 27 0 28 0;
 #X connect 28 0 29 0;
 #X connect 30 0 23 0;
-#X connect 31 0 30 1;
+#X connect 31 0 37 0;
 #X connect 32 0 13 0;
+#X connect 34 0 35 0;
+#X connect 35 0 36 0;
+#X connect 36 0 30 1;
+#X connect 37 0 34 0;
