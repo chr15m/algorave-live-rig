@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [ "$2" = "" ]
+then
+  echo "Usage: $0 SLOT# OGG"
+else
+  fname=`basename "${2}"`
+  name=`echo "${fname}" | sed 's/stem-\([0-9a-z_]*\)-.*/\1/g'`
+  echo "mix/slot/$1 slots/loop-readanysf-clip mix $1 8 ${ALGORAVE_BPM} ${ALGORAVE_BEATS} ${2};" | nc localhost 54877
+  echo "surface slot/$1 ${name};" | nc localhost 54877
+fi

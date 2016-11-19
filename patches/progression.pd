@@ -1,4 +1,4 @@
-#N canvas 986 564 450 300 10;
+#N canvas 1307 1606 450 300 10;
 #X obj 9 11 r progression;
 #X obj 9 33 t a a;
 #X obj 36 55 print progression;
@@ -91,7 +91,7 @@
 #X obj 182 163 s ROOTNOTE;
 #X obj 268 225 list prepend set;
 #X obj 268 247 list trim;
-#X msg 268 269 8 6 1 10;
+#X msg 268 269 6 2 0;
 #X obj 182 123 + 1;
 #X connect 0 0 1 0;
 #X connect 1 0 8 0;

@@ -1,11 +1,10 @@
 #N struct 1008template-marker float a float b;
-#N struct 1010template-marker float a float b;
-#N canvas 646 1231 450 300 10;
+#N canvas 644 171 450 300 10;
 #X declare -path droidparty-abstrations;
-#N canvas 637 456 450 300 x 1;
+#N canvas 635 446 450 300 x 1;
 #X obj 7 277 declare -path droidparty-abstrations;
 #X obj 7 13 router fx-one;
-#N canvas 297 1626 450 462 net 1;
+#N canvas 295 566 450 462 net 1;
 #X obj 10 409 == 0;
 #X obj 74 274 r routed;
 #X obj 74 296 list prepend send;
@@ -64,13 +63,15 @@
 #X obj 7 35 router fx-one/sel/idx;
 #X obj 7 73 router snatch-down;
 #X obj 7 95 router snatch-val;
+#X obj 7 125 router fx-1-loop;
+#X obj 7 147 router fx-two/sel/idx;
 #X restore 7 268 pd x;
 #X obj 8 10 touch 200 200 fx-one;
-#X obj 8 222 taplist 200 32 x fx-one/sel crush delay ringmod filter ghost;
+#X obj 8 222 taplist 200 32 x fx-one/sel crush delay ringmod filter
+ghost;
 #X obj 292 269 tgl 14 0 empty connected empty 17 7 0 10 -262144 -1
 -1 0 1;
 #X symbolatom 313 269 20 0 0 0 - ip -, f 20;
-#X obj 223 222 touch 128 32 snatch;
 #N canvas 1255 245 506 379 snatch-event-handler 0;
 #X obj 126 37 unpack f f;
 #X obj 153 99 sel -1;
@@ -135,3 +136,6 @@
 #X symbolatom 303 155 20 0 0 0 s/5 slot/5 -, f 20;
 #X symbolatom 303 175 20 0 0 0 s/6 slot/6 -, f 20;
 #X symbolatom 303 195 20 0 0 0 s/7 slot/7 -, f 20;
+#X obj 226 222 taplist 200 32 x fx-two/sel none delay reverb;
+#X obj 217 12 tgl 32 0 fx-1-loop empty empty 17 7 0 10 -262144 -1 -1
+0 1;
