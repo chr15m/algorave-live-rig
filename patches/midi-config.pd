@@ -1,4 +1,4 @@
-#N canvas 30 145 1454 869 10;
+#N canvas 357 101 1454 869 10;
 #X declare -path ../s-abstractions/trunk;
 #X declare -path ../pd-midi-guis;
 #X declare -path ../lolPd;
@@ -7,24 +7,24 @@
 #X obj 35 19 s-midimonitor;
 #X obj 340 41 declare -path ../pd-midi-guis;
 #X obj 40 138 vsl 15 128 0 1 0 0 empty mix/mixer/0/vol empty 0 -9 0
-10 -262144 -1 -1 12700 1;
+10 -262144 -1 -1 0 1;
 #X obj 60 138 vsl 15 128 0 1 0 0 empty mix/mixer/1/vol empty 0 -9 0
 10 -262144 -1 -1 0 1;
 #X obj 80 138 vsl 15 128 0 1 0 0 empty mix/mixer/2/vol empty 0 -9 0
-10 -262144 -1 -1 0 1;
+10 -262144 -1 -1 6700 1;
 #X obj 100 138 vsl 15 128 0 1 0 0 empty mix/mixer/3/vol empty 0 -9
-0 10 -262144 -1 -1 5400 1;
-#X obj 120 138 vsl 15 128 0 1 0 0 empty mix/mixer/4/vol empty 0 -9
-0 10 -262144 -1 -1 11800 1;
-#X obj 140 138 vsl 15 128 0 1 0 0 empty mix/mixer/5/vol empty 0 -9
 0 10 -262144 -1 -1 0 1;
+#X obj 120 138 vsl 15 128 0 1 0 0 empty mix/mixer/4/vol empty 0 -9
+0 10 -262144 -1 -1 0 1;
+#X obj 140 138 vsl 15 128 0 1 0 0 empty mix/mixer/5/vol empty 0 -9
+0 10 -262144 -1 -1 12700 1;
 #X obj 161 138 vsl 15 128 0 1 0 0 empty mix/mixer/6/vol empty 0 -9
 0 10 -262144 -1 -1 0 1;
 #X obj 169 19 g_midi_settings;
 #X obj 169 85 g_midi_toggle CYCLE;
 #X text 256 90 CYCLE;
 #X obj 341 62 declare -path ../lolPd;
-#N canvas 2 50 551 417 snatcher 0;
+#N canvas 2 50 551 445 snatcher 0;
 #X obj 37 47 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144 -1
 -1 0;
 #X obj 37 67 - 1;
@@ -48,10 +48,11 @@
 #X obj 208 149 / 127;
 #X obj 36 235 expr $f1 + $f2 * 2 + $f3 * 4;
 #X obj 36 257 - 1;
-#X obj 36 336 list prepend;
-#X obj 36 300 range 8;
-#X obj 36 278 t b f;
-#X msg 36 358 \; mix/mixer/\$2/snatch \$1 \;;
+#X obj 36 366 list prepend;
+#X obj 36 340 range 8;
+#X obj 36 318 t b f;
+#X msg 36 388 \; mix/mixer/\$2/snatch \$1 \;;
+#X obj 36 285 fx-looper CYCLE;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 3 0 9 0;
@@ -62,7 +63,6 @@
 #X connect 6 0 9 0;
 #X connect 7 0 5 0;
 #X connect 8 0 4 0;
-#X connect 9 0 24 0;
 #X connect 11 0 18 0;
 #X connect 12 0 17 0;
 #X connect 13 0 19 0;
@@ -75,11 +75,12 @@
 #X connect 18 0 15 0;
 #X connect 19 0 16 0;
 #X connect 20 0 21 0;
-#X connect 21 0 24 0;
+#X connect 21 0 26 0;
 #X connect 22 0 25 0;
 #X connect 23 0 22 0;
 #X connect 24 0 23 0;
 #X connect 24 1 22 1;
+#X connect 26 0 24 0;
 #X restore 311 144 pd snatcher;
 #X obj 341 83 declare -path ../list-abs;
 #X obj 311 510 t a a;
@@ -92,30 +93,47 @@
 #X msg 41 382 \; mix/mixer/\$1/vol \$2;
 #X text 40 340 volume sliders;
 #X text 39 427 player fx parameter;
-#N canvas 1044 308 450 300 acid-mapper 0;
-#X obj 14 16 g_midi_slider mix/acid/5/param-2;
+#N canvas 1040 288 450 300 acid-mapper 0;
+#X obj 14 16 g_midi_slider mix/acid/5/param-2-pre;
 #X obj 14 96 g_midi_button mix/acid/5/rez-set;
 #X obj 14 51 g_midi_slider fx-2/distortion;
-#X text 220 20 mix/acid/5/param-2;
+#X text 220 20 mix/acid/5/param-2-pre;
 #X text 220 52 fx-2/distortion;
 #X text 113 100 mix/acid/5/rez-set;
-#X obj 13 152 g_midi_slider fx-2/fx-1;
-#X obj 13 184 g_midi_slider fx-2/fx-2;
-#X text 218 153 fx-2/fx-1;
-#X text 224 186 fx-2/fx-2;
+#X obj 14 162 r mix/acid/5/param-2-pre;
+#X obj 14 184 midi-single-looper;
+#X obj 14 206 s mix/acid/5/param-2;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
 #X restore 395 144 pd acid-mapper;
 #X msg 40 472 \; mix/player/\$1/param-1 \$2;
 #X obj 311 196 midi-mapper-button 64 71;
 #X obj 311 488 midi-mapper-button 32 39;
 #X obj 311 264 midi-mapper-button 48 55;
 #X obj 41 360 midi-mapper-ctl 0 6;
-#X obj 40 448 midi-mapper-ctl 16 22;
 #X obj 311 290 t a a;
 #X msg 311 426 \; mix/mixer/\$1/bus-fx2 \$2;
 #X obj 408 314 unpack f f;
 #X obj 465 337 == 0;
 #X obj 408 366 pack f f;
 #X msg 408 388 \; mix/mixer/\$1/bus-main \$2;
+#N canvas 2 50 450 300 fx-2-mapper 0;
+#X obj 28 24 g_midi_slider fx-2/fx-1-pre;
+#X obj 28 56 g_midi_slider fx-2/fx-2-pre;
+#X text 233 25 fx-2/fx-1-pre;
+#X text 239 58 fx-2/fx-2-pre;
+#X obj 32 120 r fx-2/fx-1-pre;
+#X obj 32 142 midi-single-looper;
+#X obj 32 164 s fx-2/fx-1;
+#X obj 188 143 midi-single-looper;
+#X obj 188 121 r fx-2/fx-2-pre;
+#X obj 188 165 s fx-2/fx-2;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X restore 395 170 pd fx-2-mapper;
+#X obj 40 448 midi-mapper-ctl 16 22;
 #X connect 16 0 21 0;
 #X connect 16 1 17 0;
 #X connect 17 0 19 0;
@@ -124,11 +142,11 @@
 #X connect 19 0 22 0;
 #X connect 28 0 20 0;
 #X connect 29 0 16 0;
-#X connect 30 0 33 0;
+#X connect 30 0 32 0;
 #X connect 31 0 23 0;
-#X connect 32 0 27 0;
-#X connect 33 0 34 0;
-#X connect 35 0 37 0;
-#X connect 35 1 36 0;
-#X connect 36 0 37 1;
-#X connect 37 0 38 0;
+#X connect 32 0 33 0;
+#X connect 34 0 36 0;
+#X connect 34 1 35 0;
+#X connect 35 0 36 1;
+#X connect 36 0 37 0;
+#X connect 39 0 27 0;
