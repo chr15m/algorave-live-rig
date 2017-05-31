@@ -1,23 +1,31 @@
 Launch Pd app:
 
-	./launch &
+	./bin/launch [--gui] &
+
+Get into virtualenv:
+
+	. ./virtualenv/bin/activate
 
 Set the BPM:
 
-	. ./bpm 180
+	. ./bin/bpm 180
 
 Set notehash environment variables:
 
-	. ./notes
+	. ./bin/notes
 
 Build stems with notehash environment and load into channels:
 
-	./slot # get a list of generators
-	./slot 0 bleep_crunch
-	./slot 1 808er
+	./bin/slot # get a list of generators
+	./bin/slot 0 bleep_crunch
+	./bin/slot 1 808er
 
 Record
 
-	./record
-	./record --stop
+	./bin/record
+	./bin/record --stop
+
+Volume
+
+	. ./bin/send mix/mixer/0/vol 1
 
