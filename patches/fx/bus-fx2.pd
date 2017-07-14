@@ -1,4 +1,4 @@
-#N canvas 619 108 450 300 10;
+#N canvas 618 103 450 300 10;
 #X declare -path ../../s-abstractions/trunk;
 #X declare -path ../../lolPd;
 #X obj 13 12 inlet~;
@@ -13,9 +13,9 @@
 #X obj 189 148 fx/reverb 2 fx-2;
 #X obj 177 9 loadbang;
 #X msg 177 31 0;
-#N canvas 2 50 450 300 distortion 0;
+#N canvas 2 48 450 300 distortion 0;
 #X obj 90 91 hsl 64 15 1 20 0 1 empty empty distortion -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 5673 1;
 #X obj 30 115 e_foldover;
 #X obj 170 67 * 20;
 #X obj 170 45 / 127;
@@ -24,14 +24,16 @@
 #X obj 170 23 r fx-2/distortion;
 #X msg 98 48 0;
 #X obj 98 26 loadbang;
+#X obj 30 140 *~ 0.25;
 #X connect 0 0 1 1;
-#X connect 1 0 5 0;
+#X connect 1 0 9 0;
 #X connect 2 0 0 0;
 #X connect 3 0 2 0;
 #X connect 4 0 1 0;
 #X connect 6 0 3 0;
 #X connect 7 0 0 0;
 #X connect 8 0 7 0;
+#X connect 9 0 5 0;
 #X restore 12 48 pd distortion;
 #X connect 0 0 12 0;
 #X connect 2 0 8 1;

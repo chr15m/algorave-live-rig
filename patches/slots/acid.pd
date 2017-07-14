@@ -1,4 +1,4 @@
-#N canvas 749 239 542 476 10;
+#N canvas 747 229 542 476 10;
 #X declare -path ../../pd-acid-core;
 #X declare -path ../../pd-acid-core/common;
 #X declare -path ../../pd-acid-core/blockhead;
@@ -18,11 +18,11 @@
 #X obj 371 288 r GOODNOTES;
 #X obj 276 28 declare -path ../../pd-acid-core/common;
 #X obj 22 89 hsl 128 15 0 127 0 1 empty empty acid/cutoff -2 -8 0 10
--262144 -1 -1 7500 1;
+-262144 -1 -1 6300 1;
 #X obj 22 195 hsl 128 15 0 127 0 1 empty empty acid/rez -2 -8 0 10
 -262144 -1 -1 500 1;
 #X obj 19 250 hradio 15 1 1 6 empty empty empty 0 -8 0 10 -262144 -1
--1 1;
+-1 2;
 #X obj 19 270 - 2;
 #X obj 19 109 s \$1/acid/\$2/cutoff;
 #X obj 19 215 s \$1/acid/\$2/rez;
@@ -33,7 +33,7 @@
 #X obj 18 318 acid-core \$1/acid/\$2;
 #X obj 226 386 list prepend set;
 #X obj 226 408 list trim;
-#X msg 226 430 5 10 11;
+#X msg 226 430 11 1 8;
 #N canvas 2 50 450 300 clock-dividier 0;
 #X obj 12 12 inlet;
 #X obj 12 94 u_tick-multiplier;

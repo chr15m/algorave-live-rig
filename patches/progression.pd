@@ -99,7 +99,7 @@
 #X obj 182 163 s ROOTNOTE;
 #X obj 268 225 list prepend set;
 #X obj 268 247 list trim;
-#X msg 268 269 3 6 7 8 10;
+#X msg 268 269 5 7 8;
 #X obj 182 123 + 1;
 #X connect 0 0 1 0;
 #X connect 1 0 8 0;
