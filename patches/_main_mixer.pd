@@ -1,4 +1,4 @@
-#N canvas 598 94 450 181 10;
+#N canvas 597 89 450 181 10;
 #X obj 281 130 dac~;
 #N canvas 977 254 450 300 init 0;
 #X obj 10 11 loadbang;
@@ -15,7 +15,8 @@
 #X obj 301 106 r~ mix/master/right;
 #X text 11 9 command list \; \; seed ... \; mix/slot/0 looper my/file.wav
 \; bpm 180 \; bpm-slide 180 \;;
-#X floatatom 216 12 5 0 0 0 - clock/tick -, f 5;
 #X obj 11 127 mixer mix slots/live-mixer-unit;
+#X obj 210 11 nbx 4 20 -1e+37 1e+37 0 0 empty clock/tick empty 0 -8
+0 20 -260097 -1 -1 175 256;
 #X connect 3 0 0 0;
 #X connect 4 0 0 1;
