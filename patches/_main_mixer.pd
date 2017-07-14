@@ -1,5 +1,5 @@
-#N canvas 588 118 450 326 10;
-#X obj 11 299 dac~;
+#N canvas 598 94 450 181 10;
+#X obj 281 130 dac~;
 #N canvas 977 254 450 300 init 0;
 #X obj 10 11 loadbang;
 #X obj 10 33 t b b;
@@ -10,12 +10,12 @@
 #X connect 1 0 3 0;
 #X connect 1 1 2 0;
 #X restore 382 13 pd init;
-#X obj 11 124 slot mix;
-#X obj 11 251 r~ mix/master/left;
-#X obj 31 275 r~ mix/master/right;
+#X obj 11 106 slot mix;
+#X obj 281 82 r~ mix/master/left;
+#X obj 301 106 r~ mix/master/right;
 #X text 11 9 command list \; \; seed ... \; mix/slot/0 looper my/file.wav
 \; bpm 180 \; bpm-slide 180 \;;
 #X floatatom 216 12 5 0 0 0 - clock/tick -, f 5;
-#X obj 11 145 mixer mix slots/live-mixer-unit;
+#X obj 11 127 mixer mix slots/live-mixer-unit;
 #X connect 3 0 0 0;
 #X connect 4 0 0 1;
